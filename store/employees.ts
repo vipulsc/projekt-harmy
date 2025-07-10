@@ -1,6 +1,5 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { StateCreator } from "zustand";
 import { getRandomDepartment, getRandomRating } from "@/lib/utils";
 
 export interface Employee {
@@ -13,8 +12,20 @@ export interface Employee {
   age: number;
   department: string;
   rating: number;
-  bio?: string;
-  profileUrl?: string;
+  bio: string;
+  profileUrl: string;
+  [key: string]: string | boolean | number;
+}
+
+interface ApiUser {
+  id: number;
+  firstName: string;
+  lastName: string;
+  gender: string;
+  email: string;
+  image?: string;
+  age: number;
+  rating?: number;
 }
 
 type EmployeeStore = {
@@ -26,7 +37,10 @@ type EmployeeStore = {
   addEmployee: (emp: Partial<Employee>) => void;
 };
 
-const employeeStoreCreator: StateCreator<EmployeeStore> = (set, get) => ({
+const employeeStoreCreator: import("zustand").StateCreator<EmployeeStore> = (
+  set,
+  get
+) => ({
   employees: [],
   loading: false,
   error: "",
@@ -35,7 +49,7 @@ const employeeStoreCreator: StateCreator<EmployeeStore> = (set, get) => ({
     try {
       const res = await fetch("https://dummyjson.com/users?limit=20");
       const data = await res.json();
-      const enhanced = data.users.map((user: any) => ({
+      const enhanced = data.users.map((user: ApiUser) => ({
         ...user,
         department: getRandomDepartment(),
         rating:
@@ -45,16 +59,18 @@ const employeeStoreCreator: StateCreator<EmployeeStore> = (set, get) => ({
         image: user.image || "/image.png",
       }));
       set({ employees: enhanced, loading: false });
-    } catch (err) {
+    } catch {
       set({ error: "Failed to fetch employee data", loading: false });
     }
   },
-  getEmployeeById: (id) =>
-    get().employees.find((e) => String(e.id) === String(id)),
-  addEmployee: (emp) => {
+  getEmployeeById: (id: number | string) =>
+    get().employees.find((e: Employee) => String(e.id) === String(id)),
+  addEmployee: (emp: Partial<Employee>) => {
     const employees = get().employees;
     const newId =
-      employees.length > 0 ? Math.max(...employees.map((e) => e.id)) + 1 : 1;
+      employees.length > 0
+        ? Math.max(...employees.map((e: Employee) => e.id)) + 1
+        : 1;
     set({
       employees: [
         ...employees,
