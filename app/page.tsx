@@ -1,12 +1,14 @@
 import Hero from "@/components/Hero";
-import Section from "@/components/Section";
+import Section from "@/components/Feature";
 import LogoStrip from "@/components/LogoStrip";
+import Price from "@/components/Price";
 export default function Home() {
   return (
     <div>
       <Hero />
       <LogoStrip />
-      <Section></Section>
+      <Section />
+      <Price />
     </div>
   );
 }
