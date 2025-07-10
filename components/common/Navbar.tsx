@@ -31,7 +31,9 @@ export const Navbar = () => {
         <div className="flex items-center">
           <div className="relative">
             <Link href="/">
-              <h1 className="text-2xl font-bold text-gray-800">harmY</h1>
+              <h1 className="text-2xl md:text-3xl font-extrabold text-gray-800">
+                harmY
+              </h1>
             </Link>
             <div className="absolute -top-1 -right-3 flex gap-1">
               <div className="w-2 h-2 bg-gradient-to-br from-orange-400 to-red-400 rounded-full animate-pulse"></div>
@@ -45,7 +47,7 @@ export const Navbar = () => {
         <motion.div className="hidden md:flex items-center gap-4 md:gap-6">
           <Link
             href="/dashboard"
-            className={`text-sm font-medium relative group transition-colors hover:text-emerald-600 ${
+            className={`text-md font-medium relative group transition-colors hover:text-emerald-600 ${
               pathname === "/dashboard" ? "text-emerald-600 font-bold" : ""
             }`}
           >
@@ -54,7 +56,7 @@ export const Navbar = () => {
           </Link>
           <Link
             href="/bookmark"
-            className={`text-sm font-medium relative group transition-colors hover:text-emerald-600 ${
+            className={`text-md font-medium relative group transition-colors hover:text-emerald-600 ${
               pathname === "/bookmark" ? "text-emerald-600 font-bold" : ""
             }`}
           >
@@ -63,7 +65,7 @@ export const Navbar = () => {
           </Link>
           <Link
             href="/analytics"
-            className={`text-sm font-medium relative group transition-colors hover:text-emerald-600 ${
+            className={`text-md font-medium relative group transition-colors hover:text-emerald-600 ${
               pathname === "/analytics" ? "text-emerald-600 font-bold" : ""
             }`}
           >
