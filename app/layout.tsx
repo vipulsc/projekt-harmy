@@ -1,6 +1,9 @@
+import React, { Suspense } from "react";
 import type { Metadata } from "next";
 import { urbanist } from "@/font";
 import "./globals.css";
+import Loader from "@/components/common/Loader";
+import RouteLoader from "@/components/common/RouteLoader";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,7 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${urbanist.variable} antialiased`}>{children}</body>
+      <body className={`${urbanist.variable} antialiased`}>
+        <RouteLoader />
+        <Suspense fallback={<Loader />}>{children}</Suspense>
+      </body>
     </html>
   );
 }

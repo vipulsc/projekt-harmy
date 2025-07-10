@@ -12,7 +12,7 @@ export default function Hero() {
   }
   return (
     <BgGradient>
-      <div className="flex flex-col mt-10 sm:flex-row items-center justify-center sm:justify-between min-h-[80vh] px-4 sm:px-12 md:px-20 lg:px-32 xl:px-48 2xl:px-64">
+      <div className="flex flex-col mt-20 sm:pt-10 sm:flex-row items-center justify-center sm:justify-between min-h-[80vh] px-4 sm:px-12 md:px-20 lg:px-32 xl:px-48 2xl:px-64">
         <div className="flex flex-col gap-2 ">
           <div>
             <h1 className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl max-w-xl leading-tight">

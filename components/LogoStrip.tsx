@@ -57,56 +57,56 @@ const companies: Company[] = [
 ];
 
 export default function LogoStrip() {
-  // Create multiple duplicates for seamless infinite scroll
   const duplicatedCompanies = [...companies, ...companies, ...companies];
 
   return (
-    <div className="flex items-center bg-[#ecfdf5] text-emerald-950 justify-between px-40 gap-4 h-[20vh]">
-      <div className="text-2xl  font-bold">
-        Trusted By <br />
-        <span className="text-2xl font-bold">20000 +</span>
-      </div>
+    <div className="py-10">
+      <div className="flex flex-col  sm:flex-row items-center bg-[#ecfdf5] text-emerald-950 justify-between px-4 sm:px-40 gap-4 sm:gap-4 h-auto sm:h-[20vh] py-6 sm:py-0">
+        <div className="text-xl sm:text-2xl font-bold mb-4 sm:mb-0 text-center sm:text-left">
+          Trusted By <br />
+          <span className="text-xl sm:text-2xl font-bold">20000 +</span>
+        </div>
 
-      {/* <div className="text-emerald-600 text-9xl mx-8">|</div> */}
-      <div className="bg-emerald-600 w-0.5 h-30 mx-8"></div>
+        <div className="bg-emerald-600 w-0.5 h-10 sm:h-30 mx-4 sm:mx-8 hidden sm:block"></div>
 
-      <div className="flex-1 overflow-hidden py-8">
-        <motion.div
-          className="flex gap-12 items-center"
-          animate={{
-            x: [0, -100 * companies.length],
-          }}
-          transition={{
-            x: {
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 30,
-              ease: "linear",
-            },
-          }}
-          style={{
-            width: "max-content",
-            willChange: "transform",
-          }}
-        >
-          {duplicatedCompanies.map((company, index) => (
-            <div
-              key={`${company.name}-${index}`}
-              className="flex items-center gap-3 px-6 py-3  rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 min-w-max whitespace-nowrap"
-            >
-              <Image
-                src={company.logo}
-                alt={company.name}
-                width={100}
-                height={100}
-                className="w-30 h-10 object-contain"
-              />
-              <span className={`font-semibold text-lg ${company.color}`}>
-                {/* {company.name} */}
-              </span>
-            </div>
-          ))}
-        </motion.div>
+        <div className="flex-1 w-full overflow-x-auto sm:overflow-hidden py-4 sm:py-8">
+          <motion.div
+            className="flex gap-6 sm:gap-12 items-center"
+            animate={{
+              x: [0, -100 * companies.length],
+            }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 30,
+                ease: "linear",
+              },
+            }}
+            style={{
+              width: "max-content",
+              willChange: "transform",
+            }}
+          >
+            {duplicatedCompanies.map((company, index) => (
+              <div
+                key={`${company.name}-${index}`}
+                className="flex  items-center gap-2 sm:gap-3 px-3 sm:px-6 py-2 sm:py-3 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 min-w-max whitespace-nowrap"
+              >
+                <Image
+                  src={company.logo}
+                  alt={company.name}
+                  width={60}
+                  height={40}
+                  className="w-16 sm:w-30 h-8 sm:h-10 object-contain"
+                />
+                <span
+                  className={`font-semibold text-base sm:text-lg ${company.color}`}
+                ></span>
+              </div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </div>
   );
