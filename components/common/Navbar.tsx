@@ -74,7 +74,11 @@ export const Navbar = () => {
 
         {/* Login Button and Mobile Hamburger */}
         <div className="flex items-center gap-4">
-          <GlassButton type="submit" variant="primary">
+          <GlassButton
+            type="submit"
+            variant="primary"
+            className="cursor-pointer"
+          >
             Login
           </GlassButton>
 

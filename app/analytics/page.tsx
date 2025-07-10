@@ -1,3 +1,3 @@
-export default function Analytics() {
-  return <div>dksjdksaj</div>;
+export default function analytics() {
+  return <>check check</>;
 }
