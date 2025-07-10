@@ -100,7 +100,7 @@ export default function Dashboard() {
             </div>
             <button
               onClick={() => setShowAddModal(true)}
-              className="flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white font-semibold px-6 py-3 rounded-xl shadow-lg transition-all duration-200 w-full lg:w-auto justify-center"
+              className="flex items-center gap-2 bg-gradient-to-r from-emerald-500/90 to-emerald-500/80  hover:from-emerald-800/90 hover:to-emerald-800/80 text-white font-semibold px-6 py-3 rounded-xl shadow-lg transition-all duration-200 w-full lg:w-auto justify-center"
             >
               <Plus className="w-5 h-5" />
               Add Employee
