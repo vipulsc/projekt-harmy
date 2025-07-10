@@ -5,6 +5,8 @@ import "./globals.css";
 import Loader from "@/components/common/Loader";
 import RouteLoader from "@/components/common/RouteLoader";
 import { Navbar } from "@/components/common/Navbar";
+import { ClerkProvider } from "@clerk/nextjs";
+import { neobrutalism } from "@clerk/themes";
 
 export const metadata: Metadata = {
   title: "harmY",
@@ -17,12 +19,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${urbanist.variable} antialiased`}>
-        <RouteLoader />
-        <Navbar />
-        <Suspense fallback={<Loader />}>{children}</Suspense>
-      </body>
-    </html>
+    <ClerkProvider
+      appearance={{
+        baseTheme: [neobrutalism],
+      }}
+    >
+      <html lang="en">
+        <body className={`${urbanist.variable} antialiased`}>
+          <RouteLoader />
+          <Navbar />
+          <Suspense fallback={<Loader />}>{children}</Suspense>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

@@ -4,10 +4,13 @@ import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import GlassButton from "../ui/GlassButton";
 import { usePathname } from "next/navigation";
+import { UserButton, useUser } from "@clerk/nextjs";
+
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  const { isSignedIn, user } = useUser();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,13 +79,34 @@ export const Navbar = () => {
 
         {/* Login Button and Mobile Hamburger */}
         <div className="flex items-center gap-4">
-          <GlassButton
-            type="submit"
-            variant="primary"
-            className="cursor-pointer"
-          >
-            Login
-          </GlassButton>
+          {isSignedIn ? (
+            <div className="flex items-center gap-2">
+              <UserButton afterSignOutUrl="/" />
+              <span className="font-semibold text-gray-800 text-md hidden md:inline">
+                {user?.firstName ||
+                  user?.username ||
+                  user?.emailAddresses?.[0]?.emailAddress ||
+                  "User"}
+                {user?.lastName ? ` ${user.lastName}` : ""}
+              </span>
+              <span className="font-semibold text-gray-800 text-md md:hidden">
+                {user?.firstName ||
+                  user?.username ||
+                  user?.emailAddresses?.[0]?.emailAddress ||
+                  "User"}
+              </span>
+            </div>
+          ) : (
+            <Link href="/sign-in">
+              <GlassButton
+                type="submit"
+                variant="primary"
+                className="cursor-pointer"
+              >
+                Login
+              </GlassButton>
+            </Link>
+          )}
 
           {/* Mobile Hamburger */}
           <button
