@@ -40,7 +40,7 @@ export default function EmployeeProfile({
   const handle = employee.email ? `@${employee.email.split("@")[0]}` : "";
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-emerald-50 flex flex-col items-center py-0 px-10 mt-24">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-emerald-50 flex flex-col items-center py-0 px-0 mt-24">
       {/* Profile Hero */}
       <div className="relative w-full flex flex-col items-center justify-center min-h-[340px] sm:min-h-[400px] bg-gradient-to-br from-blue-200/60 via-white/60 to-emerald-200/60 overflow-visible">
         {/* Profile Image */}
