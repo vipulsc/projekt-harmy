@@ -3,9 +3,11 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import GlassButton from "../ui/GlassButton";
+import { usePathname } from "next/navigation";
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,21 +43,27 @@ export const Navbar = () => {
         <motion.div className="hidden md:flex items-center gap-4 md:gap-6">
           <Link
             href="/dashboard"
-            className="text-sm font-medium relative group transition-colors hover:text-emerald-600"
+            className={`text-sm font-medium relative group transition-colors hover:text-emerald-600 ${
+              pathname === "/dashboard" ? "text-emerald-600 font-bold" : ""
+            }`}
           >
             Dashboard
             <span className="absolute left-1/2 bottom-0 w-0 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
           </Link>
           <Link
             href="/analytics"
-            className="text-sm font-medium relative group transition-colors hover:text-emerald-600"
+            className={`text-sm font-medium relative group transition-colors hover:text-emerald-600 ${
+              pathname === "/analytics" ? "text-emerald-600 font-bold" : ""
+            }`}
           >
             Analytics
             <span className="absolute left-1/2 bottom-0 w-0 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
           </Link>
           <Link
             href="/bookmark"
-            className="text-sm font-medium relative group transition-colors hover:text-emerald-600"
+            className={`text-sm font-medium relative group transition-colors hover:text-emerald-600 ${
+              pathname === "/bookmark" ? "text-emerald-600 font-bold" : ""
+            }`}
           >
             Bookmarks
             <span className="absolute left-1/2 bottom-0 w-0 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
@@ -99,7 +107,9 @@ export const Navbar = () => {
             <div className="flex flex-col">
               <Link
                 href="/dashboard"
-                className="text-base font-medium py-4 px-6 hover:bg-emerald-50/50 transition-colors border-b border-gray-100/50"
+                className={`text-base font-medium py-4 px-6 hover:bg-emerald-50/50 transition-colors border-b border-gray-100/50 ${
+                  pathname === "/dashboard" ? "text-emerald-600 font-bold" : ""
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 <div className="flex items-center gap-3">
@@ -109,7 +119,9 @@ export const Navbar = () => {
               </Link>
               <Link
                 href="/analytics"
-                className="text-base font-medium py-4 px-6 hover:bg-emerald-50/50 transition-colors border-b border-gray-100/50"
+                className={`text-base font-medium py-4 px-6 hover:bg-emerald-50/50 transition-colors border-b border-gray-100/50 ${
+                  pathname === "/analytics" ? "text-emerald-600 font-bold" : ""
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 <div className="flex items-center gap-3">
@@ -119,7 +131,9 @@ export const Navbar = () => {
               </Link>
               <Link
                 href="/bookmark"
-                className="text-base font-medium py-4 px-6 hover:bg-emerald-50/50 transition-colors"
+                className={`text-base font-medium py-4 px-6 hover:bg-emerald-50/50 transition-colors ${
+                  pathname === "/bookmark" ? "text-emerald-600 font-bold" : ""
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 <div className="flex items-center gap-3">

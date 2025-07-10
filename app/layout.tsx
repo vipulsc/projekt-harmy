@@ -4,6 +4,7 @@ import { urbanist } from "@/font";
 import "./globals.css";
 import Loader from "@/components/common/Loader";
 import RouteLoader from "@/components/common/RouteLoader";
+import { Navbar } from "@/components/common/Navbar";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,6 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${urbanist.variable} antialiased`}>
         <RouteLoader />
+        <Navbar />
         <Suspense fallback={<Loader />}>{children}</Suspense>
       </body>
     </html>

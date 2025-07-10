@@ -20,7 +20,7 @@ export default function RouteLoader() {
       }, minDuration);
       prevPath.current = pathname;
     }
-    // Clean up on unmount{important hai}
+    // Clean up
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };

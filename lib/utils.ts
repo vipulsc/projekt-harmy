@@ -1,6 +1,6 @@
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { departments } from "./constants";
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}
+export const getRandomDepartment = () =>
+  departments[Math.floor(Math.random() * departments.length)];
+
+export const getRandomRating = () => Math.floor(Math.random() * 5) + 1;
