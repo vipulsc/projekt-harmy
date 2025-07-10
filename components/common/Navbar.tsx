@@ -1,12 +1,30 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "motion/react";
+import GlassButton from "../ui/GlassButton";
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <div className="fixed top-0 w-full z-50 bg-emerald-100/20 backdrop-blur-xs border-b border-white/10 shadow-sm">
+    <div
+      className={`fixed top-0 w-full z-50 bg-emerald-100/20 backdrop-blur-xs transition-all duration-300 ${
+        isScrolled ? "shadow-md" : ""
+      }`}
+    >
       <div className="flex justify-between items-center px-12 sm:px-24 md:px-32 lg:px-48 py-4 md:py-4 lg:py-6">
         <div className="flex items-center">
           <div className="relative">
@@ -46,9 +64,9 @@ export const Navbar = () => {
 
         {/* Login Button and Mobile Hamburger */}
         <div className="flex items-center gap-4">
-          <button className="bg-btn-primary-bg rounded-full text-[var(--btn-primary-text)] hover:bg-btn-primary-hover px-6 md:px-8 hover:shadow-lg hover:shadow-btn-primary-hover/50 cursor-pointer py-2 text-md">
+          <GlassButton type="submit" variant="primary">
             Login
-          </button>
+          </GlassButton>
 
           {/* Mobile Hamburger */}
           <button
