@@ -1,4 +1,4 @@
-import { Employee } from "@/hooks/useDashboard";
+import { Employee } from "@/store/employees";
 import { useBookmarkStore } from "@/store/bookmarks";
 import Image from "next/image";
 import { Star, StarOff, Mail } from "lucide-react";
