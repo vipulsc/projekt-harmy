@@ -53,21 +53,21 @@ export const Navbar = () => {
             <span className="absolute left-1/2 bottom-0 w-0 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
           </Link>
           <Link
-            href="/analytics"
-            className={`text-sm font-medium relative group transition-colors hover:text-emerald-600 ${
-              pathname === "/analytics" ? "text-emerald-600 font-bold" : ""
-            }`}
-          >
-            Analytics
-            <span className="absolute left-1/2 bottom-0 w-0 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
-          </Link>
-          <Link
             href="/bookmark"
             className={`text-sm font-medium relative group transition-colors hover:text-emerald-600 ${
               pathname === "/bookmark" ? "text-emerald-600 font-bold" : ""
             }`}
           >
             Bookmarks
+            <span className="absolute left-1/2 bottom-0 w-0 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          </Link>
+          <Link
+            href="/analytics"
+            className={`text-sm font-medium relative group transition-colors hover:text-emerald-600 ${
+              pathname === "/analytics" ? "text-emerald-600 font-bold" : ""
+            }`}
+          >
+            Analytics
             <span className="absolute left-1/2 bottom-0 w-0 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
           </Link>
         </motion.div>
