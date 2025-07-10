@@ -40,7 +40,7 @@ A clean, modern HR platform for teams that value people and progress. Fast, beau
 
 _Click the image to watch the demo video._
 
-▶️ [Watch local demo video](public/demoVideo.mp4)
+▶️ [Watch local demo video](https://drive.google.com/file/d/1gcKKckDTTF-KacNGVc9g6ie4HC44Lt65/view?usp=drive_link)
 
 ---
 
