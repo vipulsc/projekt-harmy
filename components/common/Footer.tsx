@@ -21,7 +21,7 @@ function LiveClock() {
     return () => clearInterval(interval);
   }, []);
   return (
-    <div className="text-xs md:text-sm font-mono bg-black/30 rounded px-3 py-1 text-yellow-200 border border-yellow-400 whitespace-nowrap shadow-lg">
+    <div className="text-xs md:text-sm font-mono bg-black/30 rounded px-3 py-1 text-yellow-200 pb-4 md:pb-0 shadow-lg">
       Local Time: {time}
     </div>
   );
@@ -109,7 +109,12 @@ export default function Footer() {
       <div className="text-center text-base py-2 font-extrabold text-yellow-400   bg-black">
         Made with Love and Effort by Vipul
       </div>
-      <div className="absolute right-4 bottom-2 z-10">
+
+      <div className="block md:hidden bg-black text-center">
+        <LiveClock />
+      </div>
+
+      <div className="hidden md:block absolute right-4 bottom-2 z-10">
         <LiveClock />
       </div>
     </footer>

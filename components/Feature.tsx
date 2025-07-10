@@ -1,8 +1,6 @@
 "use client";
 import { Star, CheckCircle, Users, BarChart3 } from "lucide-react";
-import { motion } from "motion/react";
-import { useRef } from "react";
-import { useInView } from "framer-motion";
+import { motion } from "framer-motion";
 
 const features = [
   {
@@ -28,23 +26,20 @@ const features = [
 ];
 
 export default function Feature() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { amount: 0.3, once: true });
-
   return (
     <motion.div
-      ref={ref}
       className="py-24 px-4 sm:px-8 md:px-16 lg:px-32 xl:px-48 bg-gray-50"
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      style={{ willChange: "transform, opacity" }}
+      initial={{ opacity: 0, y: 40, scale: 0.98 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ type: "spring", stiffness: 70, damping: 16, duration: 0.6 }}
     >
       <div className="max-w-6xl mx-auto flex flex-col items-center text-center gap-8">
         <motion.h2
           className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 drop-shadow-lg"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
         >
           Everything your HR team needs, beautifully unified
         </motion.h2>
@@ -52,7 +47,7 @@ export default function Feature() {
           className="text-lg text-gray-600 max-w-2xl"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
         >
           Empower your people and processes with a platform designed for modern
           teams. Discover features that save time, boost engagement, and drive
@@ -63,23 +58,16 @@ export default function Feature() {
             <motion.div
               key={f.title}
               className="flex flex-col items-center bg-white/90 backdrop-blur-lg border border-gray-200 rounded-2xl p-8 shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-gray-300"
-              initial={{
-                opacity: 0,
-                x: i < 2 ? -120 : 120,
-                y: 20,
-              }}
-              animate={{
-                opacity: inView ? 1 : 0,
-                x: inView ? 0 : i < 2 ? -120 : 120,
-                y: inView ? 0 : 20,
-              }}
+              initial={{ opacity: 0, y: 40, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{
                 type: "spring",
-                stiffness: 100,
-                damping: 20,
-                duration: 0.8,
-                delay: inView ? 0.6 + i * 0.15 : 0,
+                stiffness: 70,
+                damping: 16,
+                duration: 0.6,
+                delay: 0.18 + i * 0.09,
               }}
+              style={{ willChange: "transform, opacity" }}
             >
               <div className="mb-4">{f.icon}</div>
               <div className="text-xl font-bold text-gray-900 mb-2">

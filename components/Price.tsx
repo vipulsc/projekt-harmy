@@ -1,6 +1,6 @@
 "use client";
 import { CheckCircle, Building2 } from "lucide-react";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import React, { useRef } from "react";
 import Image from "next/image";
 
@@ -107,52 +107,24 @@ const officePhotos = [
   },
 ];
 
-const BgGradient2: React.FC = () => (
+const BgGradient2 = () => (
   <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-white to-blue-50 opacity-60" />
 );
 
-type GlassButtonProps = {
-  children: React.ReactNode;
-  size?: "md" | "lg";
-  variant?: "primary" | "secondary";
-  className?: string;
-};
-
-const GlassButton: React.FC<GlassButtonProps> = ({
-  children,
-  size = "md",
-  variant = "primary",
-  className = "",
-}) => (
-  <button
-    className={`
-      relative overflow-hidden rounded-xl backdrop-blur-md border transition-all duration-300 hover:scale-105 active:scale-95
-      ${
-        variant === "primary"
-          ? "bg-gradient-to-r from-emerald-500 to-emerald-600 text-white border-emerald-400/50 shadow-lg hover:shadow-xl"
-          : "bg-white/20 text-gray-700 border-white/30"
-      }
-      ${size === "lg" ? "px-8 py-4 text-lg" : "px-6 py-3"}
-      ${className}
-    `}
-  >
-    {children}
-  </button>
-);
-
-const Price: React.FC = () => {
-  const priceRef = useRef<HTMLDivElement>(null);
+const Price = () => {
+  const priceRef = useRef(null);
   return (
     <div
       ref={priceRef}
       className="relative min-h-[70vh] flex items-center justify-center py-24 px-4 overflow-hidden"
+      style={{ willChange: "transform, opacity" }}
     >
       <BgGradient2 />
       {floatingDots.map((dot, i) => (
         <motion.div
           key={i}
           className="absolute z-10 pointer-events-none"
-          style={{ left: dot.x, top: dot.y }}
+          style={{ left: dot.x, top: dot.y, willChange: "transform, opacity" }}
           initial={{ scale: 0.7, opacity: 0.7, rotate: 0 }}
           animate={{
             scale: [0.7, 1.1, 0.7],
@@ -187,6 +159,7 @@ const Price: React.FC = () => {
             style={{
               ...photo.position,
               transform: `rotate(${photo.rotation}deg)`,
+              willChange: "transform, opacity",
             }}
             initial={{
               scale: 0,
@@ -194,18 +167,14 @@ const Price: React.FC = () => {
               rotate: photo.rotation - 20,
               y: 30,
             }}
-            whileInView={{
-              scale: 1,
-              opacity: 1,
-              rotate: photo.rotation,
-              y: 0,
-            }}
+            whileInView={{ scale: 1, opacity: 1, rotate: photo.rotation, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{
               type: "spring",
-              stiffness: 100,
-              damping: 15,
+              stiffness: 70,
+              damping: 16,
               delay: photo.delay,
-              duration: 0.8,
+              duration: 0.7,
             }}
             whileHover={{
               scale: 1.1,
@@ -225,10 +194,7 @@ const Price: React.FC = () => {
               </div>
               <div
                 className="absolute inset-0 bg-black/25 rounded-lg blur-sm translate-x-2 translate-y-2"
-                style={{
-                  width: photo.size.width,
-                  height: photo.size.height,
-                }}
+                style={{ width: photo.size.width, height: photo.size.height }}
               />
               <div
                 className="absolute inset-0 bg-white rounded-lg -translate-x-2 -translate-y-2"
@@ -245,6 +211,7 @@ const Price: React.FC = () => {
                 style={{
                   width: photo.size.width,
                   height: photo.size.height,
+                  willChange: "transform, opacity",
                 }}
                 className="relative"
               >
@@ -254,10 +221,7 @@ const Price: React.FC = () => {
                   width={photo.size.width}
                   height={photo.size.height}
                   className="rounded-lg object-cover border-4 border-white shadow-xl"
-                  style={{
-                    width: photo.size.width,
-                    height: photo.size.height,
-                  }}
+                  style={{ width: photo.size.width, height: photo.size.height }}
                   unoptimized
                 />
               </motion.div>
@@ -270,70 +234,38 @@ const Price: React.FC = () => {
           </motion.div>
         ))}
       </div>
-      <motion.div
-        className="relative z-20 max-w-md w-full mx-auto bg-white/80 backdrop-blur-2xl border border-emerald-100 rounded-3xl shadow-2xl px-8 py-12 flex flex-col items-center"
-        initial={{ y: 80, opacity: 0, scale: 0.9 }}
-        whileInView={{ y: 0, opacity: 1, scale: 1 }}
-        transition={{ type: "spring", stiffness: 80, damping: 18, duration: 1 }}
-      >
-        <motion.div
-          className="flex items-center gap-3 mb-4"
-          initial={{ scale: 0.7, rotate: -10, opacity: 0 }}
-          animate={{ scale: 1, rotate: 0, opacity: 1 }}
-          transition={{ type: "spring", stiffness: 120, delay: 0.2 }}
-        >
+      <div className="relative z-20 max-w-md w-full mx-auto bg-white/80 backdrop-blur-2xl border border-emerald-100 rounded-3xl shadow-2xl px-8 py-12 flex flex-col items-center">
+        <div className="flex items-center gap-3 mb-4">
           <Building2 className="w-10 h-10 text-emerald-500 drop-shadow-lg" />
           <span className="text-3xl sm:text-4xl font-extrabold tracking-tight drop-shadow-lg font-serif">
             Corporate
           </span>
-        </motion.div>
-        <motion.div
-          className="text-6xl sm:text-7xl font-extrabold text-emerald-700 mb-2 drop-shadow-xl font-sans"
-          initial={{ scale: 0.7, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{
-            type: "spring",
-            stiffness: 180,
-            damping: 12,
-            bounce: 0.4,
-            delay: 0.4,
-          }}
-        >
+        </div>
+        <div className="text-6xl sm:text-7xl font-extrabold text-emerald-700 mb-2 drop-shadow-xl font-sans">
           $299
           <span className="text-2xl align-super text-emerald-400 font-bold">
             /mo
           </span>
-        </motion.div>
+        </div>
         <div className="text-lg text-gray-600 mb-8 text-center max-w-xs">
           For ambitious teams and modern enterprises. Unlock every feature, with
           premium support and security.
         </div>
         <ul className="flex flex-col gap-4 mb-10 w-full">
-          {features.map((feature, i) => (
-            <motion.li
+          {features.map((feature) => (
+            <li
               key={feature}
               className="flex items-center gap-3 text-emerald-900 text-base font-medium"
-              initial={{ x: -30, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              transition={{
-                delay: 0.6 + i * 0.1,
-                type: "spring",
-                stiffness: 120,
-              }}
             >
               <CheckCircle className="w-6 h-6 text-emerald-500 drop-shadow" />
               {feature}
-            </motion.li>
+            </li>
           ))}
         </ul>
-        <GlassButton
-          size="lg"
-          variant="primary"
-          className="w-full text-lg shadow-xl"
-        >
+        <button className="relative overflow-hidden rounded-xl backdrop-blur-md border transition-all duration-300 hover:scale-105 active:scale-95 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white border-emerald-400/50 shadow-lg hover:shadow-xl px-8 py-4 text-lg w-full text-lg shadow-xl">
           Get Started
-        </GlassButton>
-      </motion.div>
+        </button>
+      </div>
     </div>
   );
 };
