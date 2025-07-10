@@ -10,9 +10,7 @@ const BgGradient: React.FC<BgGradientProps> = ({
   className = "",
 }) => {
   return (
-    <div
-      className={`min-h-screen bg-white relative overflow-hidden  ${className}`}
-    >
+    <div className={`bg-white relative overflow-hidden  ${className}`}>
       {/* Top Right Glow (lighter now) */}
       <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-emerald-300/20 rounded-full blur-3xl" />
 
