@@ -1,15 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-
-type Employee = {
-  id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  department: string;
-  rating: number;
-  [key: string]: string | boolean | number;
-};
+import type { Employee } from "@/store/employees";
 
 type BookmarkStore = {
   bookmarks: Employee[];
