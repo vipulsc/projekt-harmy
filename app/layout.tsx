@@ -7,6 +7,7 @@ import RouteLoader from "@/components/common/RouteLoader";
 import { Navbar } from "@/components/common/Navbar";
 import { ClerkProvider } from "@clerk/nextjs";
 import { neobrutalism } from "@clerk/themes";
+import Footer from "@/components/common/Footer";
 
 export const metadata: Metadata = {
   title: "harmY",
@@ -29,6 +30,7 @@ export default function RootLayout({
           <RouteLoader />
           <Navbar />
           <Suspense fallback={<Loader />}>{children}</Suspense>
+          <Footer />
         </body>
       </html>
     </ClerkProvider>
