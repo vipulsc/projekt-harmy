@@ -40,21 +40,21 @@ export const Navbar = () => {
         {/* Desktop Navigation */}
         <motion.div className="hidden md:flex items-center gap-4 md:gap-6">
           <Link
-            href="/"
+            href="/dashboard"
             className="text-sm font-medium relative group transition-colors hover:text-emerald-600"
           >
             Dashboard
             <span className="absolute left-1/2 bottom-0 w-0 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
           </Link>
           <Link
-            href="/"
+            href="/analytics"
             className="text-sm font-medium relative group transition-colors hover:text-emerald-600"
           >
             Analytics
             <span className="absolute left-1/2 bottom-0 w-0 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
           </Link>
           <Link
-            href="/"
+            href="/bookmark"
             className="text-sm font-medium relative group transition-colors hover:text-emerald-600"
           >
             Bookmarks
@@ -98,7 +98,7 @@ export const Navbar = () => {
           <div className="bg-white/95 backdrop-blur-md border border-white/20 rounded-2xl mx-4 mt-4 shadow-2xl overflow-hidden">
             <div className="flex flex-col">
               <Link
-                href="/"
+                href="/dashboard"
                 className="text-base font-medium py-4 px-6 hover:bg-emerald-50/50 transition-colors border-b border-gray-100/50"
                 onClick={() => setIsOpen(false)}
               >
@@ -108,7 +108,7 @@ export const Navbar = () => {
                 </div>
               </Link>
               <Link
-                href="/"
+                href="/analytics"
                 className="text-base font-medium py-4 px-6 hover:bg-emerald-50/50 transition-colors border-b border-gray-100/50"
                 onClick={() => setIsOpen(false)}
               >
@@ -118,7 +118,7 @@ export const Navbar = () => {
                 </div>
               </Link>
               <Link
-                href="/"
+                href="/bookmark"
                 className="text-base font-medium py-4 px-6 hover:bg-emerald-50/50 transition-colors"
                 onClick={() => setIsOpen(false)}
               >
