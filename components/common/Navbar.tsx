@@ -30,7 +30,9 @@ export const Navbar = () => {
       <div className="flex justify-between items-center px-12 sm:px-24 md:px-32 lg:px-48 py-4 md:py-4 lg:py-6">
         <div className="flex items-center">
           <div className="relative">
-            <h1 className="text-2xl font-bold text-gray-800">harmY</h1>
+            <Link href="/">
+              <h1 className="text-2xl font-bold text-gray-800">harmY</h1>
+            </Link>
             <div className="absolute -top-1 -right-3 flex gap-1">
               <div className="w-2 h-2 bg-gradient-to-br from-orange-400 to-red-400 rounded-full animate-pulse"></div>
               <div className="w-2 h-2 bg-gradient-to-br from-blue-400 to-indigo-400 rounded-full animate-pulse delay-100"></div>
