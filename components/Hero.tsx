@@ -3,7 +3,7 @@ import { Mail } from "lucide-react";
 import BgGradient from "./common/BgGradient";
 import GlassButton from "./ui/GlassButton";
 import { useState } from "react";
-
+import Image from "next/image";
 export default function Hero() {
   const [email, setEmail] = useState("");
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -12,16 +12,16 @@ export default function Hero() {
   }
   return (
     <BgGradient>
-      <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-between  min-h-[90vh] px-0 sm:px-48 md:px-72 lg:px-92 ">
+      <div className="flex flex-col mt-10 sm:flex-row items-center justify-center sm:justify-between min-h-[80vh] px-4 sm:px-12 md:px-20 lg:px-32 xl:px-48 2xl:px-64">
         <div className="flex flex-col gap-2 ">
           <div>
-            <h1 className="font-extrabold text-4xl">
+            <h1 className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl max-w-xl leading-tight">
               Built for HRs <br />
               Designed for Teams
             </h1>
           </div>
           <div className="pt-4">
-            <p className="text-md w-[30vw]">
+            <p className="text-md max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl">
               From performance insights to people management empower your HR
               workflow with one powerful, elegant dashboard.
             </p>
@@ -50,7 +50,16 @@ export default function Hero() {
             </form>
           </div>
         </div>
-        <div>Hi</div>
+        <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl aspect-[5/4] mt-8 sm:mt-0">
+          <Image
+            src="/image.png"
+            alt="Hero Card"
+            fill
+            style={{ objectFit: "contain" }}
+            priority
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 700px"
+          />
+        </div>
       </div>
     </BgGradient>
   );

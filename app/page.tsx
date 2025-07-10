@@ -1,7 +1,7 @@
 import Hero from "@/components/Hero";
 import Section from "@/components/Section";
 import { Navbar } from "@/components/common/Navbar";
-
+import LogoStrip from "@/components/LogoStrip";
 export default function Home() {
   return (
     <div>
@@ -10,6 +10,7 @@ export default function Home() {
       </div> */}
       <Navbar />
       <Hero />
+      <LogoStrip />
       <Section></Section>
     </div>
   );
