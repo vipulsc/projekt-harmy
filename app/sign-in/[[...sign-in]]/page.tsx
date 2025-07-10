@@ -74,9 +74,7 @@ export default function Page() {
               </Link>
             </div>
 
-            <p className="text-sm">
-              © 2025 pathBlaze, Inc. All Rights Reserved.
-            </p>
+            <p className="text-sm">© 2025 harmY, Inc. All Rights Reserved.</p>
           </div>
         </div>
 
